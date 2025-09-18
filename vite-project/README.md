@@ -1,7 +1,7 @@
 ### SDE Intern Assignment
 ## Build a simple Contact Book web app that's responsive.
 # Requirements
-<!-- 1. Frontend
+1. Frontend
 • Responsive form with fields: Name, Email, Phone.
 • Show saved contacts in a list below the form.
 2. Functionality
