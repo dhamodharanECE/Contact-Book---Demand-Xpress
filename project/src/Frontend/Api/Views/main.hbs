@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server</title>
+    <style>
+        *{
+          
+           font-family: Arial, sans-serif;
+        }
+        .title{
+        color: rgb(20, 123, 36);
+        }
+        .title1{
+        color: rgb(0, 2, 11);
+        }
+        .form{
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        border: 5px solid #110e0e;
+        border-radius: 10px;
+        width: 500px;
+        margin: 40px auto;
+        padding-top: 20px;
+       background-color: rgb(218, 231, 231);
+        }
+        label{
+        align-items: start;
+        }
+        button:hover{
+            background-color: lightgreen;
+            color: tomato;
+        }
+        input:hover{
+            background-color: lightgreen;
+            color: tomato;
+        }
+        input{
+        padding: 10px;
+        border-radius: 10px;
+        border: 2px solid #ccc;
+        width: 80%;
+        margin: 20px auto;
+        }
+
+        button{
+        padding: 10px 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        margin: 20px;
+        }  
+        table {
+        width: 70%;
+        border-collapse: collapse;
+        border: 1px solid gray;
+        padding: 10px;
+        line-height: 50px;
+        margin-left: 15%;
+        margin-bottom: 50px;
+        } 
+
+        td {
+        padding-left: 20px;
+        text-align: left;
+        }
+
+        .id {
+        padding-left: 28px;
+        width: 10%;
+        }
+
+        .name {
+        width: 30%;
+        }
+
+        .email {
+        width: 40%;
+        }
+        h1{
+        text-align: center;
+        }
+        .header {
+        font-family: sans-serif;
+        font-weight: bold;
+        background-color: MediumSeaGreen;
+        color: aliceblue;
+        text-transform: capitalize;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 class="title">Mongdb database is connecting...</h1>
+    {{message}}
+    <br>
+    <h1 class="title1">CREATE FORM</h1>
+    <br>
+    <form action="/create" method="post" id="userForm" class="form">
+        <label>Name:</label>
+        <input type="text" name="name" id="name" placeholder="Enter your name" required>
+        <label>Email:</label>
+        <input type="email" name="email" id="email" placeholder="Enter your valid email" required>
+        <label>Phone:</label>
+        <input type="text" name="phone" id="phone" placeholder="Enter your phone in 1 to 10 digit number" required>
+        <button type="submit">Submit</button>
+        <button type="reset" id="reset">Reset</button>
+    </form>
+
+         <h1>Employee Data Table</h1>
+<table>
+  <thead>
+    <tr class="header">
+      <td class="name">Name</td>
+      <td class="email">Email</td>
+      <td class="phone">Phone</td>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each userdetails}}
+    <tr>
+      <td class="name">{{this.name}}</td>
+      <td class="email">{{this.email}}</td>
+      <td class="phone">{{this.phone}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+ <script>
+    function ValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function ValidPhoneNumber(phone) {
+      return /^\d{10}$/.test(phone);
+    }
+
+    const form = document.getElementById('userForm');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      let valid = true;
+
+      document.getElementById('emailError').innerText = '';
+      document.getElementById('phoneError').innerText = '';
+
+      if (!ValidEmail(email)) {
+        document.getElementById('emailError').innerText = 'Invalid Email';
+        valid = false;
+      }
+
+      if (!ValidPhoneNumber(phone)) {
+        document.getElementById('phoneError').innerText = 'Invalid Phone Number';
+        valid = false;
+      }
+
+      if (valid) {
+        form.submit(); 
+      }
+    });
+  </script>
+</body>
+</html>
