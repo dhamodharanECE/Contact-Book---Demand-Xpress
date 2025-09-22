@@ -1,34 +1,7 @@
- *{
-  background-color: rgb(131, 137, 137);
+.title{
+  font-family: sans-serif;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 24px;
+    color: #333;
 }
-.tittle{
-  color: rgb(10, 106, 42);
-}
-.form{
-  font-family: Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  border: 5px solid #110e0e;
-  border-radius: 10px;
-  width: 500px;
-  margin: 20px auto;
-}
-label{
-  align-items: start;
-}
-input{
-  margin: 10px;
-  padding: 10px;
-  border-radius: 10px;
-  border: 2px solid #ccc;
-  width: 80%;
-}
-
-button{
-  padding: 10px 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  margin: 20px;
-} 
